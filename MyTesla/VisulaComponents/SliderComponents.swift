@@ -15,19 +15,17 @@ struct BidirectionalSlider: View {
     private let thumbRadius: CGFloat = 12
     
     var body: some View {
-        
+            
         GeometryReader { geometry in
             ZStack(alignment: .leading){
                 //--Track
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.colorSliderLong.opacity(0.5))
-                    .frame(width: geometry.size.width, height: 8)
+                    .fill(Color.colorSliderLong.opacity(1))
+                    .frame(width: geometry.size.width, height: 4)
                 
-                //--Thumb
-                Circle()
-                    .fill(Color.white)
-                    .fill(Color.orange.opacity(0.5))
-                    .stroke(Color.orange, lineWidth: 1)
+                //--Image as Thumb
+                Image(.tumb)
+                    .offset(y: 8)
                     .frame(width: thumbRadius * 2)
                     .offset(x: CGFloat((maxValue + value)/(maxValue - minValue)) * geometry.size.width - thumbRadius)
                     .gesture(

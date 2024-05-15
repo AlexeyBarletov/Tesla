@@ -12,6 +12,8 @@ struct ClimateView: View {
     var circleVisualComponents = CircleVisualComponents()
     var unlockView = UnlockView()
     var bottomSheet = BottomSheet()
+    var slider = BidirectionalSlider()
+    var sliders = [BidirectionalSlider(), BidirectionalSlider(), BidirectionalSlider(), BidirectionalSlider(), BidirectionalSlider()]
     
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -19,11 +21,16 @@ struct ClimateView: View {
             bottomSheet
             circleVisualComponents
             VStack {
-                     visualElementNavigationBarView
-                         .padding(.top,180)
-                     Spacer()
-                 }
-         }
+                visualElementNavigationBarView
+                    .padding(.top,180)
+                Spacer()
+            }
+            VStack {
+                Spacer()
+                visualComponentsButton
+            }
+        }
+        .padding(.bottom, 100)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
         
@@ -47,6 +54,32 @@ struct ClimateView: View {
                     .neumorphismUnSelectedStyleStroke()
             })
         }
+    }
+    func customButton(text: String, imageName: String) -> some View {
+        return HStack {
+            Text(text)
+            Button(action: {
+            }) {
+                Image(imageName)
+                    .frame(width: 1, height: 1)
+                    .padding()
+                    .neumorphismUnSelectedStyleStroke()
+                    .padding()
+            }
+            VStack(spacing: 1) {
+                slider
+                    .padding(.horizontal)
+            }
+        }
+    }
+    var visualComponentsButton: some View {
+        VStack(spacing: -65) {
+            customButton(text: "Ac", imageName: "snowflake")
+            customButton(text: "Fan", imageName: "wind")
+            customButton(text: "Heat", imageName: "drop")
+            customButton(text: "Auto", imageName: "time")
+        }
+        .padding()
     }
 }
 

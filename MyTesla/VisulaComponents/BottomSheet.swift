@@ -54,7 +54,7 @@ struct BottomSheet: View {
                 Spacer()
                 
             }
-            .frame(height: UIScreen.main.bounds.height + 200)
+            .frame(height: UIScreen.main.bounds.height + 10)
             .background(RoundedRectangle(cornerRadius: 20).fill(Color(.colorCircle)))
             .ignoresSafeArea(.all, edges: .bottom)
             .offset(y: UIScreen.main.bounds.height )
