@@ -11,7 +11,9 @@ import SwiftUI
 struct MyTeslaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UnlockView()
+                .environment(\.colorScheme, .dark)
+
         }
     }
 }
