@@ -9,22 +9,25 @@ import Foundation
 import SwiftUI
 
 struct ClimateView: View {
+    var circleVisualComponents = CircleVisualComponents()
+    var unlockView = UnlockView()
+    var bottomSheet = BottomSheet()
     
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        backgroundStackView {
-                VStack {
-                    visualElementNavigationBarView
-                        .padding()
-                    Spacer()
-                    visualComponentRectangle
-                    Spacer()
-
-                }
-                .navigationBarBackButtonHidden(true)
-            }
-        }
-    
+        ZStack {
+            bottomSheet
+            circleVisualComponents
+            VStack {
+                     visualElementNavigationBarView
+                         .padding(.top,180)
+                     Spacer()
+                 }
+         }
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        
+    }
     var visualElementNavigationBarView: some View {
         HStack {
             Button(action: {
@@ -45,24 +48,8 @@ struct ClimateView: View {
             })
         }
     }
-    
-    var visualComponentRectangle: some View {
-        ZStack{
-            Circle()
-                .fill(
-                    LinearGradient(colors: [.gradientRectangleOne, .gradientRectangleTwo], startPoint: .topLeading, endPoint: .bottomTrailing))
-                .frame(width: 168, height: 168)
-                .shadow(color: .lightShadow, radius: 20, x: -12, y: -12)
-                .shadow(color: .darkShadow, radius: 20, x: 12, y: 12)
-            Circle()
-                .fill(LinearGradient(colors: [.black.opacity(0.90), .clear], startPoint:.topLeading, endPoint: .bottomTrailing))
-                .frame(width: 119, height: 119)
-                .background(.rectangleBar)
-                .clipShape(.rect(cornerRadius: 60))
-   
-        }
-    }
 }
+
 
 #Preview {
     ClimateView()
