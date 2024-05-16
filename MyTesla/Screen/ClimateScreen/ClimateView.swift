@@ -9,28 +9,39 @@ import Foundation
 import SwiftUI
 
 struct ClimateView: View {
-    var circleVisualComponents = CircleVisualComponents()
     var unlockView = UnlockView()
-    var bottomSheet = BottomSheet()
-    var slider = BidirectionalSlider()
-    var sliders = [BidirectionalSlider(), BidirectionalSlider(), BidirectionalSlider(), BidirectionalSlider(), BidirectionalSlider()]
+   
+    @State var progres: Double = 15
+    @State var isDisclouzerGrop = true
+    @State var selectedColor = Color.blue
+    @State var text = ""
+    @State var isStateOff = false
     
+    @State var progressStart: Double = 15
+    @State var progreesEnd: Double = 30
+    var colorButton = Color.red
+    @State var stateProgreess: Double = 0
+    
+    
+    
+
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-            bottomSheet
-            circleVisualComponents
+              unlockView.gradienScreenWhite
+
             VStack {
-                visualElementNavigationBarView
-                    .padding(.top,180)
-                Spacer()
+                ScrollView {
+                    visualElementNavigationBarView
+                    Spacer().frame(height: 125)
+                    CircleVisualComponents(value: $progres, color: selectedColor, isStateCircle: isStateOff, progressStart: progressStart, progreesEnd: progreesEnd)
+                    Spacer().frame(height: 82)
+                    visualComponentsButton
+                }
             }
-            VStack {
-                Spacer()
-                visualComponentsButton
-            }
+            .padding(.top,90)
+            BottomSheet( selecedColor: $selectedColor, isStateButton: $isStateOff, buttonPlus: $progres)
         }
-        .padding(.bottom, 100)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
         
@@ -48,42 +59,78 @@ struct ClimateView: View {
             Text("CLIMATE")
                 .font(.verdanaBold(size: 20))
             Spacer()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {
+            }, label: {
                 Image(.setting)
-                    .padding()
+                .padding()
                     .neumorphismUnSelectedStyleStroke()
             })
         }
+        .padding(.horizontal,30)
     }
-    func customButton(text: String, imageName: String) -> some View {
-        return HStack {
+    func makeCustomButton(text: String, imageName: String, selectedColor: Color, progress: Binding<Double>) -> some View {
+        HStack(spacing: 19) {
             Text(text)
+                 .frame(width: 50)
+            Spacer()
             Button(action: {
+
             }) {
                 Image(imageName)
-                    .frame(width: 1, height: 1)
-                    .padding()
+                .frame(width: 50, height: 50)
+
                     .neumorphismUnSelectedStyleStroke()
-                    .padding()
             }
-            VStack(spacing: 1) {
-                slider
-                    .padding(.horizontal)
+
+                Slider(value: progress, in: 15...30, label: {
+                    
+                })
+            .tint(selectedColor)
+            .onAppear {
+                UISlider.appearance().setThumbImage(.tumb2, for: .normal)
             }
+                 .frame(width: 193)
         }
+        .padding(.vertical, 3)
+
     }
     var visualComponentsButton: some View {
-        VStack(spacing: -65) {
-            customButton(text: "Ac", imageName: "snowflake")
-            customButton(text: "Fan", imageName: "wind")
-            customButton(text: "Heat", imageName: "drop")
-            customButton(text: "Auto", imageName: "time")
-        }
-        .padding()
+        
+        DisclosureGroup(isExpanded: $isDisclouzerGrop, content: {
+            VStack( spacing: 20) {
+                HStack(spacing: 19) {
+                    Text("Ac")
+                         .frame(width: 50)
+                    Spacer()
+                    Button(action: {
+                    }) {
+                        Image("snowflake")
+                            .renderingMode(.template)
+                            .foregroundColor(isStateOff ? Color.blue : Color.red)
+                        .frame(width: 50, height: 50)
+                            .neumorphismUnSelectedStyleStroke()
+                    }
+                        Slider(value: $progres, in: 15...30, label: {
+                            
+                        })
+                    .tint(selectedColor)
+                    .onAppear {
+                        UISlider.appearance().setThumbImage(.tumb2, for: .normal)
+                    }
+                         .frame(width: 193)
+
+                }
+            
+                makeCustomButton(text: "Fan", imageName: "wind", selectedColor: colorButton, progress: $stateProgreess)
+                makeCustomButton(text: "Heat", imageName: "drop", selectedColor: colorButton, progress: $stateProgreess)
+                makeCustomButton(text: "Auto", imageName: "time",selectedColor: colorButton, progress: $stateProgreess)
+            }
+
+            .frame(width: 400)
+        }, label: {
+        })
     }
 }
-
-
 #Preview {
     ClimateView()
         .environment(\.colorScheme, .dark)

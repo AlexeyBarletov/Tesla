@@ -7,14 +7,15 @@
 
 import SwiftUI
 import Foundation
-
-
 struct BottomSheet: View {
     @GestureState private var gestureOffset = CGSize.zero
     @State private var currentMenuOffsetY: CGFloat = 0.0
     @State private var lastMenuOffsetY: CGFloat = 0.0
     var neumorphismUnSelectedStyleButoon  = NeumorphismUnSelectedStyleButton()
-    @State var selecedColor = Color.black
+    @Binding var selecedColor: Color
+    @Binding var isStateButton: Bool
+    @Binding var buttonPlus: Double
+    
     
     var dragGesture: some Gesture {
         DragGesture()
@@ -43,7 +44,6 @@ struct BottomSheet: View {
     }
     var body: some View {
         ZStack {
-            Color(.gradientOne)
             VStack {
                 visualComponentsCapsule
                 ZStack {
@@ -54,7 +54,7 @@ struct BottomSheet: View {
                 Spacer()
                 
             }
-            .frame(height: UIScreen.main.bounds.height + 10)
+            .frame(height: UIScreen.main.bounds.height + 300)
             .background(RoundedRectangle(cornerRadius: 20).fill(Color(.colorCircle)))
             .ignoresSafeArea(.all, edges: .bottom)
             .offset(y: UIScreen.main.bounds.height )
@@ -73,14 +73,19 @@ struct BottomSheet: View {
     var visualComponentBottomShet: some View {
         HStack(spacing: 40) {
             VStack(alignment: .leading, spacing: 5) {
-                Text("A/C is ON")
+                Text(" A/C \(isStateButton ? "On" : "Off")")
                     .font(.verdanaBold(size: 20))
                 Text("Tap to turn of or swipe up\nfor a fast setup")
                     .font(.verdana(size: 17))
                     .foregroundStyle(.gray)
-                
+            
             }
-            Button(action: {}) {
+            Button(action: {
+                isStateButton.toggle()
+                buttonPlus = 15
+
+            }) {
+                
                 Image(systemName: "power")
             }
             .buttonStyle(NeumorphismUnSelectedStyleButton())
@@ -91,16 +96,34 @@ struct BottomSheet: View {
     var visualComponentPoliter: some View {
         HStack(spacing: 40) {
             ColorPicker("", selection: $selecedColor)
-            Button(action: {}) {
+            Button(action:
+                    {
+                withAnimation {
+                    if buttonPlus >= 16  {
+                        buttonPlus -= 1
+                    }
+                }
+              
+                
+            }) {
                 Image(.left2)
             }
+            .disabled(!isStateButton)
             .padding()
-            Text("15")
-                .font(.verdanaBold(size: 20))
+            Text("\(buttonPlus, specifier: "%.0f")°C")
+                .frame(width: 62, height: 40)
+                .font(.verdanaBold(size: 15))
                 .padding()
-            Button(action: {}) {
+            Button(action: {
+                withAnimation {
+                    if buttonPlus >= 15 && buttonPlus < 30 {
+                        buttonPlus += 1
+                    }
+                }
+            }) {
                 Image(.ride2)
             }
+            .disabled(!isStateButton)
             Image(.door)
         }
         .padding(.trailing, 45)
@@ -121,11 +144,6 @@ struct BottomSheet: View {
         .padding(.horizontal, 35)
     }
 }
-#Preview {
-    BottomSheet()
-    
-}
-
 
 
 
