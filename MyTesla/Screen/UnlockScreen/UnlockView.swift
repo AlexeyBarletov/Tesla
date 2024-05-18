@@ -10,20 +10,34 @@ import SwiftUI
 
 struct UnlockView: View {
     @State var isCarClose = true
+    @State private var isShowingMainView = false
     var gradienScreen = LinearGradient(gradient: Gradient(colors: [.background, .black, .background]), startPoint: .bottom, endPoint: .top)
     var gradienScreenWhite = LinearGradient(gradient: Gradient(colors: [.lightShadow, .lightShadow]), startPoint: .bottom, endPoint: .top)
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Rectangle()
-                    .fill(isCarClose ? gradienScreen : gradienScreenWhite)
-                    .ignoresSafeArea()
-                VStack(alignment: .center, spacing: 50) {
-                    buttonSettingView
-                    textTeslaView
-                    carImageView
-                    closedCarController
+        ZStack {
+            if !isShowingMainView {
+                TeslaLogotip()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                            withAnimation {
+                                isShowingMainView = true
+                            }
+                        }
+                    }
+            } else {
+                NavigationView {
+                    ZStack {
+                        Rectangle()
+                            .fill(isCarClose ? gradienScreen : gradienScreenWhite)
+                            .ignoresSafeArea()
+                        VStack(alignment: .center, spacing: 50) {
+                            buttonSettingView
+                            textTeslaView
+                            carImageView
+                            closedCarController
+                        }
+                    }
                 }
             }
         }
@@ -48,7 +62,7 @@ struct UnlockView: View {
     }
     
     var buttonSettingView: some View {
-        NavigationLink(destination: ContentView()) {
+        NavigationLink(destination: Tab()) {
             Spacer()
             Image(.settingButton)
         }
@@ -76,3 +90,4 @@ struct UnlockView: View {
     UnlockView()
         .environment(\.colorScheme, .dark)
 }
+

@@ -43,7 +43,7 @@ struct CircleVisualComponents: View {
             CircularProgressView(progress: value, color: color, progreeStart: progressStart, progreesEnd: progreesEnd)
                 .frame(width: 178, height: 178)
             Text("\(value, specifier: "%.0f")°C")
-                .font(.verdana(size: 20))
+                .font(.verdana(size: 30).bold())
                 .foregroundStyle(.white)
                 .opacity(isStateCircle ? 1 : 0)
 
@@ -80,45 +80,6 @@ struct CircularProgressView: View {
         }
     }
 }
-//
-//struct AnimationCircle: View {
-//    @State var progress: Double = 0
-//    var progreeStart: Double
-//    var progreesEnd: Double
-//    
-//    var color: Color
-//    var body: some View {
-//        VStack {
-//            Spacer()
-//            ZStack {
-//                CircularProgressView(progress: progress, color: color, progreeStart: progreeStart , progreesEnd: progreesEnd)
-//                Text("\(progress * 100, specifier: "%.0f")")
-//                    .font(.largeTitle)
-//                    .bold()
-//            }.frame(width: 177, height: 170)
-//                .offset(y: 16)
-//            Spacer()
-//        }
-//    }
-//    
-//    func resetProgress() {
-//        progress = 0
-//    }
-//}
-//
-
-
-//#Preview {
-//    CircleVisualComponents()
-//        .environment(\.colorScheme, .dark)
-//}
-//
-//
-
-
-
-
-
 
 
 

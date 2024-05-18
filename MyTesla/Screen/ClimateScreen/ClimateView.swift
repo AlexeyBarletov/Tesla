@@ -22,26 +22,23 @@ struct ClimateView: View {
     var colorButton = Color.red
     @State var stateProgreess: Double = 0
     
-    
-    
-
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
-              unlockView.gradienScreenWhite
-
-            VStack {
-                ScrollView {
+            unlockView.gradienScreenWhite
+                VStack {
                     visualElementNavigationBarView
                     Spacer().frame(height: 125)
                     CircleVisualComponents(value: $progres, color: selectedColor, isStateCircle: isStateOff, progressStart: progressStart, progreesEnd: progreesEnd)
                     Spacer().frame(height: 82)
-                    visualComponentsButton
+                    ScrollView {
+                        visualComponentsButton
+                            .padding(.trailing, 40)
+                    }
                 }
+                .padding(.top,90)
+                BottomSheet( selecedColor: $selectedColor, isStateButton: $isStateOff, buttonPlus: $progres)
             }
-            .padding(.top,90)
-            BottomSheet( selecedColor: $selectedColor, isStateButton: $isStateOff, buttonPlus: $progres)
-        }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
         
@@ -78,12 +75,9 @@ struct ClimateView: View {
             }) {
                 Image(imageName)
                 .frame(width: 50, height: 50)
-
                     .neumorphismUnSelectedStyleStroke()
             }
-
                 Slider(value: progress, in: 15...30, label: {
-                    
                 })
             .tint(selectedColor)
             .onAppear {
@@ -120,13 +114,10 @@ struct ClimateView: View {
                          .frame(width: 193)
 
                 }
-            
                 makeCustomButton(text: "Fan", imageName: "wind", selectedColor: colorButton, progress: $stateProgreess)
                 makeCustomButton(text: "Heat", imageName: "drop", selectedColor: colorButton, progress: $stateProgreess)
                 makeCustomButton(text: "Auto", imageName: "time",selectedColor: colorButton, progress: $stateProgreess)
             }
-
-            .frame(width: 400)
         }, label: {
         })
     }

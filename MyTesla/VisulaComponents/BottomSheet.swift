@@ -54,7 +54,7 @@ struct BottomSheet: View {
                 Spacer()
                 
             }
-            .frame(height: UIScreen.main.bounds.height + 300)
+            .frame(height: UIScreen.main.bounds.height + 100)
             .background(RoundedRectangle(cornerRadius: 20).fill(Color(.colorCircle)))
             .ignoresSafeArea(.all, edges: .bottom)
             .offset(y: UIScreen.main.bounds.height )
@@ -103,8 +103,6 @@ struct BottomSheet: View {
                         buttonPlus -= 1
                     }
                 }
-              
-                
             }) {
                 Image(.left2)
             }
