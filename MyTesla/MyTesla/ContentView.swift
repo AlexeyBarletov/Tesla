@@ -21,7 +21,6 @@ struct ContentView: View {
     @State var isTranslitionButton = false
     var lisImageControllPanel = ["lock", "fan", "lightning", "avto"]
     var body: some View {
-        NavigationView {
                 backgroundStackView {
                     VStack {
                         NavigationLink(destination: ClimateView(), isActive: $isTranslitionButton) {
@@ -35,7 +34,6 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
-        }
         .navigationBarBackButtonHidden(true)
 
     }
@@ -97,7 +95,7 @@ struct ContentView: View {
     }
     
     var carView: some View {
-        Image(isCarClose ? .imageTeslaGrey : .openTeslaWeith)
+        Image(.tesla)
             .resizable()
             .frame(height: 150)
             .padding(.horizontal)
@@ -105,7 +103,6 @@ struct ContentView: View {
             .shadow(color: .white.opacity(0.6), radius: 15, x: 10, y: 10)
     }
 }
-
 #Preview {
     ContentView()
         .environment(\.colorScheme, .dark)

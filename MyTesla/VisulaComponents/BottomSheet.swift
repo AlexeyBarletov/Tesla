@@ -54,10 +54,10 @@ struct BottomSheet: View {
                 Spacer()
                 
             }
-            .frame(height: UIScreen.main.bounds.height + 100)
+            .frame(height: UIScreen.main.bounds.height + 60)
             .background(RoundedRectangle(cornerRadius: 20).fill(Color(.colorCircle)))
             .ignoresSafeArea(.all, edges: .bottom)
-            .offset(y: UIScreen.main.bounds.height )
+            .offset(y: UIScreen.main.bounds.height - 140 )
             .offset(y: currentMenuOffsetY)
             .gesture(dragGesture)
         }
@@ -142,8 +142,6 @@ struct BottomSheet: View {
         .padding(.horizontal, 35)
     }
 }
-
-
 
 
 

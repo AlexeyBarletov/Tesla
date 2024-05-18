@@ -107,7 +107,7 @@ struct TeslaLogotip: View {
     var body: some View {
         ZStack {
             MyIcon()
-                .stroke(borderColor, lineWidth: 1)
+                .stroke(borderColor, lineWidth: 10)
                 .fill(logoColor)
                 .frame(width: 40, height: 100)
                 .offset(x: -177, y: -365)
@@ -133,3 +133,5 @@ struct TeslaLogotip: View {
 #Preview {
     TeslaLogotip()
 }
+
+

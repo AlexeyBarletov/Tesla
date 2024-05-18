@@ -15,6 +15,7 @@
 		732EE4202BF4063200239239 /* ClimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732EE41F2BF4063200239239 /* ClimateView.swift */; };
 		7349067A2BF8BD13003E3057 /* ChargingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734906792BF8BD13003E3057 /* ChargingView.swift */; };
 		7349067D2BF8C677003E3057 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349067C2BF8C677003E3057 /* TabBarView.swift */; };
+		734906802BF908F1003E3057 /* Extension + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349067F2BF908F1003E3057 /* Extension + Hex.swift */; };
 		734A25542BF7AE43005186EC /* LogoTeslaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A25532BF7AE43005186EC /* LogoTeslaView.swift */; };
 		736B5F402BF4DDAD00727171 /* CircleVisualComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B5F3F2BF4DDAD00727171 /* CircleVisualComponents.swift */; };
 		736B5F452BF5148100727171 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B5F442BF5148000727171 /* BottomSheet.swift */; };
@@ -33,6 +34,7 @@
 		732EE41F2BF4063200239239 /* ClimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateView.swift; sourceTree = "<group>"; };
 		734906792BF8BD13003E3057 /* ChargingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargingView.swift; sourceTree = "<group>"; };
 		7349067C2BF8C677003E3057 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		7349067F2BF908F1003E3057 /* Extension + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Hex.swift"; sourceTree = "<group>"; };
 		734A25532BF7AE43005186EC /* LogoTeslaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoTeslaView.swift; sourceTree = "<group>"; };
 		736B5F3F2BF4DDAD00727171 /* CircleVisualComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleVisualComponents.swift; sourceTree = "<group>"; };
 		736B5F442BF5148000727171 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				732EE4192BF3A6D000239239 /* Extension + BackgroundView.swift */,
 				732EE41B2BF3AC5700239239 /* Extension + Font.swift */,
 				732EE41D2BF3B30C00239239 /* Extension + Gradient.swift */,
+				7349067F2BF908F1003E3057 /* Extension + Hex.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				732EE41C2BF3AC5700239239 /* Extension + Font.swift in Sources */,
 				734A25542BF7AE43005186EC /* LogoTeslaView.swift in Sources */,
 				73A766E02BF2B0000099377C /* MyTeslaApp.swift in Sources */,
+				734906802BF908F1003E3057 /* Extension + Hex.swift in Sources */,
 				732EE4142BF39C8100239239 /* UnlockView.swift in Sources */,
 				732EE4202BF4063200239239 /* ClimateView.swift in Sources */,
 				732EE41A2BF3A6D000239239 /* Extension + BackgroundView.swift in Sources */,

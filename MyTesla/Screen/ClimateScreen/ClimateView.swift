@@ -27,13 +27,14 @@ struct ClimateView: View {
         ZStack {
             unlockView.gradienScreenWhite
                 VStack {
+                    ScrollView {
                     visualElementNavigationBarView
                     Spacer().frame(height: 125)
                     CircleVisualComponents(value: $progres, color: selectedColor, isStateCircle: isStateOff, progressStart: progressStart, progreesEnd: progreesEnd)
                     Spacer().frame(height: 82)
-                    ScrollView {
                         visualComponentsButton
                             .padding(.trailing, 40)
+                        Spacer().frame(height: 200)
                     }
                 }
                 .padding(.top,90)
@@ -89,7 +90,6 @@ struct ClimateView: View {
 
     }
     var visualComponentsButton: some View {
-        
         DisclosureGroup(isExpanded: $isDisclouzerGrop, content: {
             VStack( spacing: 20) {
                 HStack(spacing: 19) {
@@ -111,17 +111,19 @@ struct ClimateView: View {
                     .onAppear {
                         UISlider.appearance().setThumbImage(.tumb2, for: .normal)
                     }
+                    .disabled(!isStateOff)
                          .frame(width: 193)
-
                 }
                 makeCustomButton(text: "Fan", imageName: "wind", selectedColor: colorButton, progress: $stateProgreess)
                 makeCustomButton(text: "Heat", imageName: "drop", selectedColor: colorButton, progress: $stateProgreess)
                 makeCustomButton(text: "Auto", imageName: "time",selectedColor: colorButton, progress: $stateProgreess)
             }
+            .padding(.top, 10)
         }, label: {
         })
     }
 }
+
 #Preview {
     ClimateView()
         .environment(\.colorScheme, .dark)
