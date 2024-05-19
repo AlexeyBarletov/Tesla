@@ -8,9 +8,19 @@
 import Foundation
 import SwiftUI
 
+///Структура для описания экрана блокировки
 struct UnlockView: View {
-    @State var isCarClose = true
+    
+    enum Constant {
+        static let textHi = "Hi"
+        static let textWelcome = "Welcome back"
+        static let textUnlock = "Unlock"
+        static let textLock = "Lock"
+    }
+    
+    @State private var isCarClose = true
     @State private var isShowingMainView = false
+    
     var gradienScreen = LinearGradient(gradient: Gradient(colors: [.background, .black, .background]), startPoint: .bottom, endPoint: .top)
     var gradienScreenWhite = LinearGradient(gradient: Gradient(colors: [.lightShadow, .lightShadow]), startPoint: .bottom, endPoint: .top)
     
@@ -45,13 +55,13 @@ struct UnlockView: View {
     
     var textTeslaView: some View {
         VStack {
-            Text("Hi")
-                .font(.custom("Verdana", size: 25))
+            Text(Constant.textHi)
+                .font(.verdana(size: 25))
                 .foregroundColor(.gray)
-            Text(isCarClose ? "" : "Welcome back")
+            Text(isCarClose ? "" : Constant.textWelcome)
         }
         .opacity(isCarClose ? 0 : 1)
-        .font(.custom("Verdana-Bold", size: 40))
+        .font(.verdanaBold(size: 40))
         .foregroundColor(.white)
     }
     
@@ -75,9 +85,9 @@ struct UnlockView: View {
             }
         } label: {
             HStack {
-                Text(isCarClose ? "Unlock" : "Lock")
+                Text(isCarClose ? Constant.textUnlock : Constant.textLock)
                     .foregroundColor(.white)
-                Image(isCarClose ? "lockClose" : "lockOpen")
+                Image(isCarClose ? ImageResource.lockClose : ImageResource.lockOpen)
                     .renderingMode(.template)
             }
             .padding()

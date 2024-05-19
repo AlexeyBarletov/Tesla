@@ -17,6 +17,11 @@
 		7349067D2BF8C677003E3057 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349067C2BF8C677003E3057 /* TabBarView.swift */; };
 		734906802BF908F1003E3057 /* Extension + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349067F2BF908F1003E3057 /* Extension + Hex.swift */; };
 		734A25542BF7AE43005186EC /* LogoTeslaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A25532BF7AE43005186EC /* LogoTeslaView.swift */; };
+		7350F1202BF9F0B8008D96E5 /* DevelopmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7350F11F2BF9F0B8008D96E5 /* DevelopmentView.swift */; };
+		7350F1232BF9FA44008D96E5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7350F1222BF9FA44008D96E5 /* ProfileView.swift */; };
+		7350F1292BFA42D2008D96E5 /* Extension + Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7350F1282BFA42D2008D96E5 /* Extension + Modifier.swift */; };
+		7350F12B2BFA44D2008D96E5 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7350F12A2BFA44D2008D96E5 /* File.swift */; };
+		7350F12E2BFA4545008D96E5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7350F12D2BFA4545008D96E5 /* Model.swift */; };
 		736B5F402BF4DDAD00727171 /* CircleVisualComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B5F3F2BF4DDAD00727171 /* CircleVisualComponents.swift */; };
 		736B5F452BF5148100727171 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B5F442BF5148000727171 /* BottomSheet.swift */; };
 		73A766E02BF2B0000099377C /* MyTeslaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A766DF2BF2B0000099377C /* MyTeslaApp.swift */; };
@@ -36,6 +41,11 @@
 		7349067C2BF8C677003E3057 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		7349067F2BF908F1003E3057 /* Extension + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Hex.swift"; sourceTree = "<group>"; };
 		734A25532BF7AE43005186EC /* LogoTeslaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoTeslaView.swift; sourceTree = "<group>"; };
+		7350F11F2BF9F0B8008D96E5 /* DevelopmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentView.swift; sourceTree = "<group>"; };
+		7350F1222BF9FA44008D96E5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7350F1282BFA42D2008D96E5 /* Extension + Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Modifier.swift"; sourceTree = "<group>"; };
+		7350F12A2BFA44D2008D96E5 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		7350F12D2BFA4545008D96E5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		736B5F3F2BF4DDAD00727171 /* CircleVisualComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleVisualComponents.swift; sourceTree = "<group>"; };
 		736B5F442BF5148000727171 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		73A766DC2BF2B0000099377C /* MyTesla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTesla.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +69,8 @@
 		732EE4112BF39C3600239239 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				7350F1212BF9FA0E008D96E5 /* ProfilScreen */,
+				7350F11E2BF9F099008D96E5 /* DevelopmentScreen */,
 				7349067E2BF8C67C003E3057 /* TabBarScreen */,
 				7349067B2BF8BDA2003E3057 /* ChargingScreen */,
 				732EE4212BF4063B00239239 /* ClimateScreen */,
@@ -87,9 +99,11 @@
 			isa = PBXGroup;
 			children = (
 				732EE4192BF3A6D000239239 /* Extension + BackgroundView.swift */,
+				7350F1282BFA42D2008D96E5 /* Extension + Modifier.swift */,
 				732EE41B2BF3AC5700239239 /* Extension + Font.swift */,
 				732EE41D2BF3B30C00239239 /* Extension + Gradient.swift */,
 				7349067F2BF908F1003E3057 /* Extension + Hex.swift */,
+				7350F12A2BFA44D2008D96E5 /* File.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -118,6 +132,30 @@
 			path = TabBarScreen;
 			sourceTree = "<group>";
 		};
+		7350F11E2BF9F099008D96E5 /* DevelopmentScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7350F11F2BF9F0B8008D96E5 /* DevelopmentView.swift */,
+			);
+			path = DevelopmentScreen;
+			sourceTree = "<group>";
+		};
+		7350F1212BF9FA0E008D96E5 /* ProfilScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7350F1222BF9FA44008D96E5 /* ProfileView.swift */,
+			);
+			path = ProfilScreen;
+			sourceTree = "<group>";
+		};
+		7350F12C2BFA4539008D96E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7350F12D2BFA4545008D96E5 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		736B5F412BF4DDB200727171 /* VisulaComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +169,7 @@
 		73A766D32BF2B0000099377C = {
 			isa = PBXGroup;
 			children = (
+				7350F12C2BFA4539008D96E5 /* Model */,
 				736B5F412BF4DDB200727171 /* VisulaComponents */,
 				732EE4182BF3A6A100239239 /* Extension */,
 				732EE4152BF3A1A000239239 /* Modifier */,
@@ -239,16 +278,21 @@
 			files = (
 				73A766E22BF2B0000099377C /* ContentView.swift in Sources */,
 				732EE41E2BF3B30C00239239 /* Extension + Gradient.swift in Sources */,
+				7350F1232BF9FA44008D96E5 /* ProfileView.swift in Sources */,
 				7349067D2BF8C677003E3057 /* TabBarView.swift in Sources */,
 				7349067A2BF8BD13003E3057 /* ChargingView.swift in Sources */,
+				7350F1202BF9F0B8008D96E5 /* DevelopmentView.swift in Sources */,
 				736B5F452BF5148100727171 /* BottomSheet.swift in Sources */,
+				7350F12B2BFA44D2008D96E5 /* File.swift in Sources */,
 				736B5F402BF4DDAD00727171 /* CircleVisualComponents.swift in Sources */,
 				732EE41C2BF3AC5700239239 /* Extension + Font.swift in Sources */,
 				734A25542BF7AE43005186EC /* LogoTeslaView.swift in Sources */,
 				73A766E02BF2B0000099377C /* MyTeslaApp.swift in Sources */,
+				7350F1292BFA42D2008D96E5 /* Extension + Modifier.swift in Sources */,
 				734906802BF908F1003E3057 /* Extension + Hex.swift in Sources */,
 				732EE4142BF39C8100239239 /* UnlockView.swift in Sources */,
 				732EE4202BF4063200239239 /* ClimateView.swift in Sources */,
+				7350F12E2BFA4545008D96E5 /* Model.swift in Sources */,
 				732EE41A2BF3A6D000239239 /* Extension + BackgroundView.swift in Sources */,
 				732EE4172BF3A1C400239239 /* Neumorphism.swift in Sources */,
 			);

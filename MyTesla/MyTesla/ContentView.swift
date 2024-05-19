@@ -8,18 +8,26 @@
 import SwiftUI
 import Foundation
 
-// MARK: Constans
-
-enum Constant {
-    static let nameAvtoTeslaText = "Tesla"
-    static let kmAvtoTeslaText = ""
-}
-
+///Струткра для отображения меню кнопок экрана Tesla
 struct ContentView: View {
-    @State var isCarClose = false
-    @State var tagSelected = 1
-    @State var isTranslitionButton = false
-    var lisImageControllPanel = ["lock", "fan", "lightning", "avto"]
+    
+    enum Constant {
+        static let nameAvtoTeslaText = "Tesla"
+        static let nameLock = "lock"
+        static let textFan = "fan"
+        static let textLightning = "lightning"
+        static let textAvto = "avto"
+        }
+    
+    
+    @State private var isCarClose = false
+    @State private var tagSelected = 1
+    @State private var isTranslitionButton = false
+    
+    var lisImageControllPanel = [Constant.nameLock,
+                                 Constant.textFan,
+                                 Constant.textLightning,
+                                 Constant.textAvto]
     var body: some View {
                 backgroundStackView {
                     VStack {
@@ -35,7 +43,6 @@ struct ContentView: View {
                     }
                 }
         .navigationBarBackButtonHidden(true)
-
     }
     
     var controllPanelView: some View {
@@ -80,6 +87,7 @@ struct ContentView: View {
         .padding()
         .background(RoundedRectangle(cornerRadius: 50).fill(Color.background))
         .neumorphismUnSelectedStyle()
+        
     }
     var headerView: some View {
         HStack {

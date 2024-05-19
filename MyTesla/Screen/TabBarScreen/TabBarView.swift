@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
+///Стурктура отображает Кастомный ТабБар
 struct CustomTabBar: Shape {
+
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: rect.midX, y: rect.midY - 10))
@@ -52,7 +54,7 @@ struct CustomTabBar: Shape {
     }
 }
 
-
+/// Структура, представляющая пользовательский ключ предпочтений для элемента вкладки.
 struct TabItemPreferenseKey: PreferenceKey {
     static var defaultValue: [TabItem] = []
     static func reduce(value: inout [TabItem], nextValue: () -> [TabItem]) {
@@ -60,6 +62,8 @@ struct TabItemPreferenseKey: PreferenceKey {
         
     }
 }
+
+/// Структура, представляющая модификатор представления для элемента вкладки.
 
 struct TabItemModifire: ViewModifier {
     
@@ -78,23 +82,18 @@ extension View {
     }
     
 }
-
-struct TabItem: Identifiable, Equatable {
-    var id = UUID()
-    var icont: String
-}
-
+/// Обобщенная структура  представляющая пользовательский вид с вкладками.
 struct CustomTabView<Content: View>: View {
 
     @Binding var selection: Int
     @Namespace private var tabBarItem
-    
     @State  private var  tabs: [TabItem] = [
         .init( icont: "avto1"),
         .init( icont: "stats"),
         .init( icont: "more"),
-            .init(icont: "explore")
+        .init(icont: "explore")
     ]
+    
     var gradientTop = LinearGradient(colors: [.topGradient, .bottomGradient], startPoint: .bottom, endPoint: .top)
 
     private var content: Content
@@ -122,7 +121,6 @@ struct CustomTabView<Content: View>: View {
     }
     
      var tabsView: some View {
-
         ForEach(Array(tabs.enumerated()), id: \.offset) { index, element in
             Image(element.icont)
             
@@ -157,33 +155,41 @@ struct CustomTabView<Content: View>: View {
 }
 
 struct Tab: View {
+    
+    enum Constant {
+       static let textIconAvto =  "avto1"
+        static let textIconStats =  "stats"
+        static let textIconMore =  "more"
+        static let textIconExplor =  "explore"
+    }
+    
     @State var selection = 0
+    
     var body: some View {
         CustomTabView(selection: $selection) {
             ContentView()
                 .myTabItem {
-                    TabItem(icont: "avto1")
+                    TabItem(icont: Constant.textIconAvto)
                 }
                 .opacity(selection == 0 ? 1 : 0)
             ChargingView()
                 .myTabItem {
-                    TabItem( icont: "stats")
+                    TabItem( icont: Constant.textIconStats)
                 }
                 .opacity(selection == 1 ? 1 : 0)
             
-            Color.white
+            ProfileView()
                 .myTabItem {
-                    TabItem( icont: "explore")
+                    TabItem( icont: Constant.textIconMore)
                 }
                 .opacity(selection == 2 ? 1 : 0)
             
-            Color.white
+            DevelopmentView()
                 .myTabItem {
-                    TabItem( icont: "more")
+                    TabItem( icont: Constant.textIconExplor)
                 }
-                .opacity(selection == 2 ? 1 : 0)
+                .opacity(selection == 3 ? 1 : 0)
         }
-        
     }
 }
 

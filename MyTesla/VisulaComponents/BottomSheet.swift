@@ -7,15 +7,28 @@
 
 import SwiftUI
 import Foundation
+
+/// Представление нижнего меню.
 struct BottomSheet: View {
+    
+    enum Constant {
+        static let textOff = "Off"
+        static let textOn = "On"
+        static let textTap = "Tap to turn of or swipe up\nfor a fast setup"
+        static let textButtonPower = "power"
+        static let textVent = "Vent"
+    }
+    
     @GestureState private var gestureOffset = CGSize.zero
     @State private var currentMenuOffsetY: CGFloat = 0.0
     @State private var lastMenuOffsetY: CGFloat = 0.0
-    var neumorphismUnSelectedStyleButoon  = NeumorphismUnSelectedStyleButton()
+    
     @Binding var selecedColor: Color
     @Binding var isStateButton: Bool
     @Binding var buttonPlus: Double
     
+    var neumorphismUnSelectedStyleButoon  = NeumorphismUnSelectedStyleButton()
+
     
     var dragGesture: some Gesture {
         DragGesture()
@@ -36,12 +49,14 @@ struct BottomSheet: View {
                 }
             }
     }
-    func onChangeMenuOffset() {
+    
+    func  onChangeMenuOffset() {
         DispatchQueue.main.async {
             currentMenuOffsetY = gestureOffset.height +
             lastMenuOffsetY
         }
     }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -70,12 +85,13 @@ struct BottomSheet: View {
             .frame(width: 50, height: 3)
             .padding(.top)
     }
+    
     var visualComponentBottomShet: some View {
         HStack(spacing: 40) {
             VStack(alignment: .leading, spacing: 5) {
-                Text(" A/C \(isStateButton ? "On" : "Off")")
+                Text(" A/C \(isStateButton ? Constant.textOn : Constant.textOff)")
                     .font(.verdanaBold(size: 20))
-                Text("Tap to turn of or swipe up\nfor a fast setup")
+                Text(Constant.textTap)
                     .font(.verdana(size: 17))
                     .foregroundStyle(.gray)
             
@@ -85,8 +101,7 @@ struct BottomSheet: View {
                 buttonPlus = 15
 
             }) {
-                
-                Image(systemName: "power")
+                Image(systemName: Constant.textButtonPower)
             }
             .buttonStyle(NeumorphismUnSelectedStyleButton())
             .padding()
@@ -109,9 +124,8 @@ struct BottomSheet: View {
             .disabled(!isStateButton)
             .padding()
             Text("\(buttonPlus, specifier: "%.0f")°C")
-                .frame(width: 62, height: 40)
-                .font(.verdanaBold(size: 15))
-                .padding()
+                .frame(width: 82, height: 50)
+                .font(.verdanaBold(size: 30))
             Button(action: {
                 withAnimation {
                     if buttonPlus >= 15 && buttonPlus < 30 {
@@ -129,12 +143,12 @@ struct BottomSheet: View {
  
     var visualComponentsView: some View {
         HStack(alignment: .center ) {
-            Text("On")
+            Text(Constant.textOn)
                 .font(.verdana(size: 17))
                 .foregroundStyle(.gray)
                 .padding(.bottom)
             Spacer()
-            Text("Vent")
+            Text(Constant.textVent)
                 .font(.verdana(size: 17))
                 .foregroundStyle(.gray)
                 .padding(.bottom)

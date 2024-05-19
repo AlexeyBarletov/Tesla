@@ -8,9 +8,19 @@
 import Foundation
 import SwiftUI
 
+///Структура описывающая экран зарядки телефона
 struct ChargingView: View {
+    
+    enum Constant {
+        static let textNearby = "Nearby Supercharges"
+        static let textLimit = "Set Сharge Limit"
+        static let textSlider = "Slider"
+        static let textPercent = "75%"
+        static let textPercentSecond = "100%"
+    }
+    
     var unlockView = UnlockView()
-    var gradient = LinearGradient(colors: [.gradientOne, .colorButtonGradientTwo],
+    var  gradient = LinearGradient(colors: [.gradientOne, .colorButtonGradientTwo],
                                   startPoint: .top,
                                   endPoint: .bottom)
     @Environment(\.presentationMode) var presentationMode
@@ -19,18 +29,17 @@ struct ChargingView: View {
     var body: some View {
         ZStack {
             gradient
-            
             VStack {
                 visualElementNavigationBarView
                 imageCarView
+                VStack {
                 textView
                 rectangleView
                 scalePercent
                 textPercent
                 tumbSliderView
-                    .frame(width: 300)
-                    .padding()
                 textTitle
+            }
                 rectangleCentre
                 Spacer()
             }
@@ -51,7 +60,7 @@ struct ChargingView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 35).inset(by: 5.1))
                     .padding(.horizontal, 26)
                 HStack {
-                    Text("Nearby Supercharges")
+                    Text(Constant.textNearby)
                         .frame(width: 206, height: 24)
                         .padding(.leading,48)
                         .font(.verdana(size: 17)).bold()
@@ -63,7 +72,6 @@ struct ChargingView: View {
                     }
                     .frame(width: 50, height: 50)
                     .neumorphismUnSelectedStyleStroke()
-
                 }
 
                 .padding(.trailing,60)
@@ -83,24 +91,23 @@ struct ChargingView: View {
     }
     
     var textTitle: some View {
-        Text("Set Сharge Limit ")
+        Text(Constant.textLimit)
             .foregroundStyle(.gray)
-        
-        
     }
     
     var tumbSliderView: some View {
         ZStack {
             lineSlider
             Slider(value: $progress, in: 0...100, label: {
-                Text("Slider")
+                Text(Constant.textSlider)
             })
-            .accentColor(.clear)
+           .accentColor(.clear)
             .onAppear {
-                UISlider.appearance().setThumbImage(UIImage(resource: .tumb1), for: .normal)
+                UISlider.appearance().setThumbImage(UIImage(resource: .tu), for: .normal)
             }
             .padding(.horizontal, 12)
         }
+        .frame(width: 300)
     }
     
     var lineSlider: some View {
@@ -138,22 +145,19 @@ struct ChargingView: View {
                 .frame(width: 278, height: 13)
                 .cornerRadius(25)
                 .offset(y: 3)
-
         }
     }
 
     var textPercent: some View {
         HStack(spacing: 30) {
             Spacer()
-            Text("75%")
-            Text("100%")
+            Text(Constant.textPercent)
+            Text(Constant.textPercentSecond)
                 .foregroundStyle(.gray)
-
         }
         .font(.verdana(size: 13))
         .foregroundStyle(.white)
         .padding(.trailing, 60)
-        
     }
     
     var textView: some View {
@@ -162,7 +166,6 @@ struct ChargingView: View {
             .font(.verdanaBold(size: 41))
     }
 
-    
     var imageCarView: some View {
         Image(.teslaCar)
             .resizable()

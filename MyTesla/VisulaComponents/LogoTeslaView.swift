@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct MyIcon: Shape {
+///Струткура для показа логотипа
+
+struct LogotipAnimation: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let width = rect.size.width
@@ -100,13 +102,15 @@ struct MyIcon: Shape {
         
     }
 }
+
+///Структура для анимации для логотипа
 struct TeslaLogotip: View {
     @State private var logoColor = Color.gradientRectangleOne
     @State private var borderColor = Color.red
     
     var body: some View {
         ZStack {
-            MyIcon()
+            LogotipAnimation()
                 .stroke(borderColor, lineWidth: 10)
                 .fill(logoColor)
                 .frame(width: 40, height: 100)

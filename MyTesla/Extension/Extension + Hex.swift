@@ -8,7 +8,10 @@
 import Foundation
 import SwiftUI
 
-extension Color {
+    /// Инициализирует цвет из шестнадцатеричного значения.
+    /// - Parameter hex: Шестнадцатеричное значение цвета.
+    /// Расширение для `Color`, которое добавляет возможность инициализации цвета из шестнадцатеричного значения.
+     extension Color {
     init(hex: String) {
         var hex = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         hex = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex

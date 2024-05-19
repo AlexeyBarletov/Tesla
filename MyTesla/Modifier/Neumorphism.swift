@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+///Структура для неотмеченного стиля элемента с эффектом неоморфизма.
 struct NeumorphismUnSelected: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -16,6 +17,7 @@ struct NeumorphismUnSelected: ViewModifier {
     }
 }
 
+///Структура для неотмеченного стиля элемента с эффектом неоморфизма.
 struct NeumorphismSelected: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -25,6 +27,8 @@ struct NeumorphismSelected: ViewModifier {
         
     }
 }
+
+///Структура  для стиля неотмеченного круглого элемента с эффектом неоморфизма.
 struct NeumorphismUnSelectedCircle: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -34,6 +38,7 @@ struct NeumorphismUnSelectedCircle: ViewModifier {
     }
 }
 
+///ViewModifier для стиля неотмеченного круглого элемента с рамкой и эффектом неоморфизма.
 struct NeumorphismUnSelectedStyleStroke: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -72,7 +77,7 @@ struct NeumorphismUnSelectedStyleStroke: ViewModifier {
     }
 }
     
-
+/// Структура  для неотмеченной кнопки с эффектом неоморфизма.
 struct NeumorphismUnSelectedStyleButton: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -105,20 +110,4 @@ struct NeumorphismUnSelectedStyleButton: ButtonStyle {
             )
     }
 }
-///Расширения для Модификаторов
-extension View {
-    func neumorphismUnSelectedStyle() -> some View {
-        modifier(NeumorphismUnSelected())
-    }
-    
-    func neumorphismSelectedStyle() -> some View {
-        modifier(NeumorphismSelected())
-    }
-    func neumorphismSelectedCircleStyle() -> some View {
-        modifier(NeumorphismUnSelectedCircle())
-    }
-    
-    func neumorphismUnSelectedStyleStroke() -> some View {
-        modifier(NeumorphismUnSelectedStyleStroke())
-    }
-}
+
