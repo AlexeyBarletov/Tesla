@@ -159,7 +159,7 @@ struct ClimateView: View {
                     }) {
                         Image(.snowflake)
                             .renderingMode(.template)
-                            .foregroundColor(isStateOff ? Color.blue : Color.red)
+                        .foregroundColor(isStateOff ? Color.blue : Color.red)
                             .frame(width: 50, height: 50)
                             .neumorphismUnSelectedStyleStroke()
                     }
